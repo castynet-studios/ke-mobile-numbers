@@ -6,8 +6,15 @@ function checker(toCheck) {
 
   // check if the regex the input matches the regex
   if (re.test(toCheck)) {
-    return toCheck.match(re);
+    var x = toCheck.match(re);
+    if (x.groups.xa !== undefined && x.groups.xb !== undefined) {
+      return [returnPrefix + x.groups.xa, returnPrefix + x.groups.xb];
+    } else if (x.groups.xa !== undefined) {
+      return returnPrefix + x.groups.xa;
+    } else if (x.groups.xb !== undefined) {
+      return returnPrefix + x.groups.xb;
+    }
   } else return "not a Safaricom number";
 }
 
-console.log(checker("0743665574"));
+console.log(checker("0723757615"));
